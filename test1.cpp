@@ -44,6 +44,7 @@ void Menu(int theme)
 
     {
 
+
         readimagefile("res/title2.jpg", 50, 20, 650, 130);
 
         readimagefile("res/menu2.jpg", 235, 250, 465, 520);
