@@ -40,26 +40,6 @@ void Menu(int theme)
 
     cleardevice();
 
-    if (theme == 2)
-
-    {
-
-
-        readimagefile("res/title2.jpg", 50, 20, 650, 130);
-
-        readimagefile("res/menu2.jpg", 235, 250, 465, 520);
-
-        Selector(240, 1, 1);
-
-        delay(10);
-
-        Theme = 2;
-    }
-
-    else
-
-    {
-
         readimagefile("res/title1.jpg", 50, 20, 650, 130);
 
         readimagefile("res/menu1.jpg", 235, 250, 465, 520);
@@ -69,7 +49,6 @@ void Menu(int theme)
         delay(10);
 
         Theme = 1;
-    }
 }
 
 // Menu Selector
@@ -244,14 +223,6 @@ void Selection(void)
             // PlaySound(TEXT("res/select_option.wav"),NULL,SND_SYNC);
         }
 
-        else if (GetAsyncKeyState(VK_F7))
-
-        {
-
-            Menu(2);
-
-            // PlaySound(TEXT("res/select_option.wav"),NULL,SND_SYNC);
-        }
 
         else if (GetAsyncKeyState(VK_RETURN))
 
@@ -290,15 +261,6 @@ void Esc_Theme(int option, int theme)
         {
 
             Function_Execution(option, 1);
-
-            // PlaySound(TEXT("res/select_option.wav"),NULL,SND_SYNC);
-        }
-
-        if (GetAsyncKeyState(VK_F7))
-
-        {
-
-            Function_Execution(option, 2);
 
             // PlaySound(TEXT("res/select_option.wav"),NULL,SND_SYNC);
         }
@@ -384,279 +346,150 @@ void Game_Interface(int Theme)
     int board_color, box_color;
 
     if (Theme == 1)
-
     {
-
         board_color = 10; // green
-
         box_color = 10;
     }
-
     else
-
     {
-
         board_color = 9; // blue
-
         box_color = 9;
     }
-
     setcolor(board_color);
-
     for (int i = 0; i < 5; i++)
-
     {
-
-        // vertical
-
         line(148 + i, 75, 148 + i, 525);
-
         line(298 + i, 75, 298 + i, 525);
-
-        // horizontal
-
         line(25, 223 + i, 425, 223 + i);
-
         line(25, 373 + i, 425, 373 + i);
     }
-
     setcolor(box_color);
-
     for (int i = 0; i < 5; i++)
-
     {
-
         rectangle(450 + i, 25 + i, 675 - i, 575 - i);
     }
 }
-
-// position of x_o
-
 int p1 = 1, p2 = 1, p3 = 1, p4 = 1, p5 = 1, p6 = 1, p7 = 1, p8 = 1, p9 = 1; // one thing at one place
-
 int n = 0;
-
 int a[9] = {-1, -1, -1, -1, -1, -1, -1, -1, -1};
-
 int flag = 0;
-
 void Check_Multi_Winner(int);
-
-// x
-
 void X_O(int Theme, int place)
-
 {
-
     int l, t, r, b;
-
     char ch;
-
     if (Theme == 1)
-
     {
-
         if (a[place - 1] == -1)
-
         {
-
             if (n % 2 == 0)
-
             {
-
                 readimagefile("res/player21.jpg", 450 + 35, 150, 600 + 35, 170);
             }
-
             else
-
             {
-
                 readimagefile("res/player11.jpg", 450 + 35, 150, 600 + 35, 170);
             }
         }
     }
-
-    if (Theme == 2)
-
-    {
-
-        if (a[place - 1] == -1)
-
-        {
-
-            if (n % 2 == 0)
-
-            {
-
-                readimagefile("res/player22.jpg", 450 + 35, 150, 600 + 35, 170);
-            }
-
-            else
-
-            {
-
-                readimagefile("res/player12.jpg", 450 + 35, 150, 600 + 35, 170);
-            }
-        }
-    }
-
     if (place == 1 && p1 == 1)
-
     {
-
         l = 25;
         t = 100;
         r = 125;
         b = 200;
-
         p1++;
-
         n++;
     }
-
     else if (place == 2 && p2 == 1)
-
     {
-
         l = 175;
         t = 100;
         r = 275;
         b = 200;
-
         p2++;
-
         n++;
     }
-
     else if (place == 3 && p3 == 1)
-
     {
-
         l = 325;
         t = 100;
         r = 425;
         b = 200;
-
         p3++;
-
         n++;
     }
-
     else if (place == 4 && p4 == 1)
-
     {
-
         l = 25;
         t = 250;
         r = 125;
         b = 350;
-
         p4++;
-
         n++;
     }
-
     else if (place == 5 && p5 == 1)
-
     {
-
         l = 175;
         t = 250;
         r = 275;
         b = 350;
-
         p5++;
-
         n++;
     }
-
     else if (place == 6 && p6 == 1)
-
     {
-
         l = 325;
         t = 250;
         r = 425;
         b = 350;
-
         p6++;
-
         n++;
     }
-
     else if (place == 7 && p7 == 1)
-
     {
-
         l = 25;
         t = 400;
         r = 125;
         b = 500;
-
         p7++;
-
         n++;
     }
-
     else if (place == 8 && p8 == 1)
-
     {
-
         l = 175;
         t = 400;
         r = 275;
         b = 500;
-
         p8++;
-
         n++;
     }
-
     else if (place == 9 && p9 == 1)
-
     {
-
         l = 325;
         t = 400;
         r = 425;
         b = 500;
-
         p9++;
-
         n++;
     }
-
     if (a[place - 1] == -1)
-
     {
-
         if (n % 2 == 0)
-
             ch = 'o';
-
         else
-
             ch = 'x';
     }
-
     if (ch == 'o')
-
     {
-
         a[place - 1] = 0;
-
         Check_Multi_Winner(0);
     }
-
     if (ch == 'x')
-
     {
-
         a[place - 1] = 1;
-
         Check_Multi_Winner(1);
     }
-
     if (Theme == 1 && ch == 'o')
 
         readimagefile("res/o1.jpg", l, t, r, b);
@@ -665,13 +498,6 @@ void X_O(int Theme, int place)
 
         readimagefile("res/x1.jpg", l, t, r, b);
 
-    else if (Theme == 2 && ch == 'o')
-
-        readimagefile("res/o2.jpg", l, t, r, b);
-
-    else if (Theme == 2 && ch == 'x')
-
-        readimagefile("res/x2.jpg", l, t, r, b);
 
     delay(500);
 }
@@ -739,24 +565,11 @@ void Check_Multi_Winner(int no)
     }
 
     if (flag == 1)
-
     {
-
         if (no == 0 && Theme == 1)
-
             readimagefile("res/player21.jpg", 450 + 35, 260 + 20, 600 + 35, 280 + 20);
-
-        if (no == 0 && Theme == 2)
-
-            readimagefile("res/player22.jpg", 450 + 35, 260 + 20, 600 + 35, 280 + 20);
-
         if (no == 1 && Theme == 1)
-
             readimagefile("res/player11.jpg", 450 + 35, 260 + 20, 600 + 35, 280 + 20);
-
-        if (no == 1 && Theme == 2)
-
-            readimagefile("res/player12.jpg", 450 + 35, 260 + 20, 600 + 35, 280 + 20);
     }
 }
 
@@ -962,23 +775,6 @@ void Function_Execution(int choice, int Theme)
             readimagefile("res/othercontrols1.jpg", 210 - 10, 440, 490 + 10, 560);
         }
 
-        if (Theme == 2)
-
-        {
-
-            readimagefile("res/menu_controls2.jpg", 250, 20, 450, 50);
-
-            readimagefile("res/menucontrols2.jpg", 210, 80, 490, 200);
-
-            readimagefile("res/game_controls2.jpg", 250, 250, 450, 280);
-
-            readimagefile("res/gamecontrols2.jpg", 120, 300 + 10, 580, 330);
-
-            readimagefile("res/other_controls2.jpg", 260, 380, 440, 410);
-
-            readimagefile("res/othercontrols2.jpg", 210 - 10, 440, 490 + 10, 560);
-        }
-
         // PlaySound(TEXT("res/select_option.wav"),NULL,SND_SYNC);
 
         Esc_Theme(3, Theme);
@@ -1010,103 +806,50 @@ void Function_Execution(int choice, int Theme)
                 bar(50, 1320 - i, 650, 2000 - i);
             }
 
-            if (Theme == 2)
-
-            {
-
-                readimagefile("res/title2.jpg", 50, 620 - i, 650, 730 - i);
-
-                readimagefile("res/about_b.jpg", 50, 800 - i, 650, 1320 - i);
-
-                bar(50, 1320 - i, 650, 2000 - i);
-            }
-
             if (GetAsyncKeyState(VK_ESCAPE))
 
             {
 
                 break;
             }
-
             if (GetAsyncKeyState(VK_F6))
-
             {
-
                 Function_Execution(4, 1);
-
                 // PlaySound(TEXT("res/select_option.wav"),NULL,SND_SYNC);
             }
-
             if (GetAsyncKeyState(VK_F7))
-
             {
-
                 Function_Execution(4, 2);
-
                 // PlaySound(TEXT("res/select_option.wav"),NULL,SND_SYNC);
             }
-
             page = 1 - page;
-
             delay(1);
         }
-
         Menu(Theme);
-
-        //  PlaySound(TEXT("res/select_option.wav"),NULL,SND_SYNC);
-
+        //  PlaySound(TEXT("res/select_option.wav"),NULL,SND_SYNC)
         Selection();
-    }
-
+    
     if (choice == 5)
-
     {
-
         cleardevice();
-
         if (Theme == 1)
-
         {
-
             readimagefile("res/quitmsg1.jpg", 50, 200, 650, 250);
-
             readimagefile("res/yes1.jpg", 100 + 50, 300 + 10, 170 + 50, 330 + 10);
-
             readimagefile("res/no1.jpg", 530 - 50, 300 + 10, 600 - 50, 330 + 10);
         }
-
-        if (Theme == 2)
-
-        {
-
-            readimagefile("res/quitmsg2.jpg", 50, 200, 650, 250);
-
-            readimagefile("res/yes2.jpg", 100 + 50, 300 + 10, 170 + 50, 330 + 10);
-
-            readimagefile("res/no2.jpg", 530 - 50, 300 + 10, 600 - 50, 330 + 10);
-        }
-
         // PlaySound(TEXT("res/select_option.wav"),NULL,SND_SYNC);
-
         Quit(Theme);
     }
 }
-
+}
 // Driver Program
-
 int main()
-
 {
-
     initwindow(1000, 1000, "Game", 150, 50);
-
     Loading_Game();
-
     Menu(1);
-
     Selection();
-
     getch();
-
     closegraph();
 }
